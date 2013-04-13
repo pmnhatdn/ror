@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
 		user =User.check(params[:session][:username],params[:session][:password])		
 		if user
 			sign_in user
-			redirect_to user, :notice => "Sign in successfully"
+			redirect_to user, :notice => signed_in?
 	  	else
             flash[:error] = 'Invalid username or password'
 	  		render 'new'

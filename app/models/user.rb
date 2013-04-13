@@ -14,9 +14,10 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :email, :fullname, :password, :password_confirmation, :password_token, :username
+  attr_accessible :email, :fullname, :password, :password_confirmation, :remember_token, :username
   validates(:username, presence: true)
   validates_uniqueness_of :username
+  validates_uniqueness_of :email
   validates :username, :length => { :maximum => 10, :minimum=>6 }
   validates :password, :length => { :maximum => 10, :minimum=>6 }
   validates(:password_confirmation, presence: true)
@@ -45,7 +46,7 @@ class User < ActiveRecord::Base
   
   private
   def create_remember_token
-  	  remember_token = SecureRandom.urlsafe_base64
+  	  self.remember_token = SecureRandom.urlsafe_base64
   end
   
   def encrypt_password

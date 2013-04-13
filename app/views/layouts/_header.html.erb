@@ -4,8 +4,7 @@
       <%= link_to "sample app", '#', id: "logo" %>           	
 		<div id='cssmenu'>
 			<ul>
-				<li class='active'><%= link_to "Home",    '#' %></li>					    
-				<li class='has-sub'><%= link_to "Account" %>					
+				<li class='has-sub'><%= link_to "Account" %>	
 					<% if signed_in? %>				
 						<ul>
 							<li><%= link_to "Edit profile ", edit_user_path(current_user) %></li>
