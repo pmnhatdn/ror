@@ -7,7 +7,7 @@
 #  password               :string(255)
 #  email                  :string(255)
 #  fullname               :string(255)
-#  password_confirmmation :string(255)
+#  password_confirmation :string(255)
 #  password_token         :string(255)
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null

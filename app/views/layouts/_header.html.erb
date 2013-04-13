@@ -4,8 +4,19 @@
       <%= link_to "sample app", '#', id: "logo" %>           	
 		<div id='cssmenu'>
 			<ul>
-				<li class='active'><%= link_to "Home",'#' %></li>				
+				<li class='active'><%= link_to "Home",    '#' %></li>					    
 				<li class='has-sub'><%= link_to "Account" %>					
+					<% if signed_in? %>				
+						<ul>
+							<li><%= link_to "Edit profile ", edit_user_path(current_user) %></li>
+							<li class='last'><%= link_to "Sign out", signout_path,:method=>:delete%></li>	
+						</ul>
+					<% else %>
+						<ul>
+							<li><%= link_to "Sign up ", signup_path %></li>
+							<li class='last'><%= link_to "Sign in", signin_path %></li>	
+						</ul>
+					<% end %>
 				</li>
 			   <li><a href='#'><span>About</span></a></li>  			  
 			</ul>

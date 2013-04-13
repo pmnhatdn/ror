@@ -7,26 +7,26 @@
 #  password               :string(255)
 #  email                  :string(255)
 #  fullname               :string(255)
-#  password_confirmmation :string(255)
+#  password_confirmation :string(255)
 #  password_token         :string(255)
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :email, :fullname, :password, :password_confirmmation, :password_token, :username
+  attr_accessible :email, :fullname, :password, :password_confirmation, :password_token, :username
   validates(:username, presence: true)
   validates_uniqueness_of :username
   validates :username, :length => { :maximum => 10, :minimum=>6 }
   validates :password, :length => { :maximum => 10, :minimum=>6 }
-  validates(:password_confirmmation, presence: true)
+  validates(:password_confirmation, presence: true)
   validates_confirmation_of :password
   validates(:fullname, presence: true) 
   validates(:email, presence: true)
   validates :email, :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => :create }
   before_save{ |user| user.username = username.downcase }
   before_save { |user| user.email = email.downcase }
-#  before_save:create_remember_token
+  before_save:create_remember_token
 #  before_save:encrypt_password # encrypt password before saving
   
   def self.check(username,password) 
@@ -52,11 +52,7 @@ class User < ActiveRecord::Base
 #	salt = BCrypt::Engine.generate_salt
  # 	password = BCrypt::Engine.hash_secret(password, salt)
   end  
-  def gravatar_for(user)
-    gravatar_id = Digest::MD5::hexdigest(user.username.downcase)
-    gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}"
-    image_tag(gravatar_url, alt: user.name, class: "gravatar")
-  end
+
   
 end
 
