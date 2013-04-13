@@ -53,3 +53,5 @@ gem 'bootstrap-sass', '2.1'
 
 #for encrypt password
 gem 'bcrypt-ruby', '3.0.1'
+
+gem 'will_paginate', '~> 3.0.0'

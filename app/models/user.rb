@@ -28,6 +28,7 @@ class User < ActiveRecord::Base
   before_save{ |user| user.username = username.downcase }
   before_save { |user| user.email = email.downcase }
   before_save:create_remember_token
+  has_many :entries
 #  before_save:encrypt_password # encrypt password before saving
   
   def self.check(username,password) 
@@ -43,12 +44,15 @@ class User < ActiveRecord::Base
 #  def feed 
  # 	Entry.where("user_id= ?",id)
   #end
-  
+  def feed
+  	Entry.where("user_id =?",id)
+  end    
   private
   def create_remember_token
   	  self.remember_token = SecureRandom.urlsafe_base64
   end
   
+
   def encrypt_password
 #	salt = BCrypt::Engine.generate_salt
  # 	password = BCrypt::Engine.hash_secret(password, salt)
