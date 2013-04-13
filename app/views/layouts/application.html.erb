@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Welcome</title>
+	<title>Ruby on Rails Tutorial Sample App | <%= yield(:title) %></title>
     <%= stylesheet_link_tag    "application", media: "all" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
@@ -16,8 +16,8 @@
           <%= link_to "sample app", '#', id: "logo" %>
           <nav>
             <ul class="nav pull-right">
-              <li><%= link_to "Home",    '#' %></li>
-              <li><%= link_to "Help",    '#' %></li>
+              <li><%= link_to "Home",    '/static_pages/home' %></li>
+              <li><%= link_to "Help",    '/static_pages/help' %></li>
               <li><%= link_to "Sign in", '#' %></li>
             </ul>
           </nav>
