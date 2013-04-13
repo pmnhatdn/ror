@@ -17,10 +17,17 @@ require 'spec_helper'
 
 describe User do
 
-  before { @user = User.new(name: "pmnhat", email: "pmnhatdn@gmail.com") }
+  before do
+  @user = User.new(username: "pmnhat", email: "pmnhatdn@gmail.com") 
+  
+ # subject { @user }
 
-  subject { @user }
-
-  it { should respond_to(:name) }
-  it { should respond_to(:email) }
+#  it { should respond_to(:username) }
+  #it { should respond_to(:email) }
+  end
+  describe "when email is not present" do
+    before { @user.email = "sd" }
+    it { should_not be_valid }
+  end  
 end
+

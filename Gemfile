@@ -51,3 +51,5 @@ end
 # CSS
 gem 'bootstrap-sass', '2.1'
 
+#for encrypt password
+gem 'bcrypt-ruby', '3.0.1'
