@@ -14,7 +14,7 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :email, :fullname, :password, :password_confirmation, :remember_token, :username
+  attr_accessible :email, :fullname, :password, :password_confirmation, :remember_token, :username  
   validates(:username, presence: true)
   validates_uniqueness_of :username
   validates_uniqueness_of :email
@@ -40,7 +40,9 @@ class User < ActiveRecord::Base
 	end
   end
   
+
   #include current_user's entries
+  # removed , use show entries instead
 #  def feed 
  # 	Entry.where("user_id= ?",id)
   #end
@@ -49,7 +51,9 @@ class User < ActiveRecord::Base
   end    
   private
   def create_remember_token
-  	  self.remember_token = SecureRandom.urlsafe_base64
+      if(self.remember_token==nil)
+  	     self.remember_token = SecureRandom.urlsafe_base64
+      end
   end
   
 

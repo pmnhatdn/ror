@@ -1,18 +1,15 @@
 <% provide(:title, @user.username) %>
 <div class="row">
   <aside>  
-  <section>
-	<%=@user.username%>   		
+  <section>	
 	  <%= gravatar_for @user %>
-  </section>
+  </section> 
+
   </aside>
-<div class="span8">
-    <% if @user.entries.any? %>
-      <h3>Entries (<%= @user.entries.count %>)</h3>
-      <ol class="entries">
-        <%= render @entries %>
-      </ol>
-      <%= will_paginate @entries %>
-    <% end %>
- </div> 
+  <section>
+    <p>Username: <%=@user.username%></p>
+    <p>Fullname: <%=@user.fullname%></p>
+    <p>Email: <%=@user.email%></p>	
+  </section
 </div>
+

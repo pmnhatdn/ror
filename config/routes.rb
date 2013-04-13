@@ -1,10 +1,13 @@
 RoR::Application.routes.draw do
  resources :users
-  resources :sessions, only: [:new, :create, :destroy]
+  resources :sessions, only: [:new, :create, :destroy]  
   resources :entries, only: [:create, :destroy]
   match '/signup',  to: 'users#new'
   match '/signin',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
+  match '/delete', to: 'entries#destroy', via: :delete
+  match '/blog', to: 'static_pages#blog'
+  get "static_pages/blog"
   get "static_pages/home"
   get "static_pages/account"
   get "static_pages/help"

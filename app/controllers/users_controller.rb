@@ -11,8 +11,7 @@ def index
   # GET /users/1
   # GET /users/1.json
   def show
-    @user = User.find(params[:id])
-    @entries = @user.entries.paginate(page: params[:page],:per_page => 6)
+    @user = User.find(params[:id])    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @user }
@@ -42,7 +41,7 @@ def index
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to signin_path, notice: 'User was successfully created.' }
+        format.html { redirect_to signin_path, notice: 'Sign up successfully' }
 #        format.json { render json: @user, status: :created, location: @user }
 #		redirect_to signin_path
       else

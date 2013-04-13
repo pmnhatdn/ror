@@ -1,0 +1,14 @@
+<% if signed_in? %>  
+  <div class="row">    
+    <aside class="span4">
+      <section>
+        <%= render 'entries/new' %>
+      </section>
+      <section>
+        <%= render 'entries/show'%>
+      </section>
+    </aside>   
+  </div>  
+<%else%>
+<p>Please <%=link_to "Sign in", signin_path %> first</p>
+<%end%>
